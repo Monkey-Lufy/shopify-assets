@@ -1902,8 +1902,19 @@
 
   async function addContainer(container, selectors, position, atEnd = true) {
     // Find the Add-to-Cart element
-    const queryElement = document.querySelector(selectors.join(", "));
-    console.log("🚀 ~ addContainer ~ queryElement:", queryElement)
+    let queryElement = document.querySelector(selectors.join(", "));
+
+    // If there's a "product-form" element, find its child form that submits to "/cart/add"
+    if (document.querySelectorAll("product-form").length === 1) {
+      let productForm = document
+        .querySelector("product-form")
+        .querySelector('form[action*="/cart/add"]');
+      if (productForm) {
+        queryElement = [productForm];
+      }
+    }
+
+    console.log("🚀 ~ addContainer ~ queryElement:", queryElement);
 
     // Ensure we're on a product page before proceeding
     if (window.location.pathname.includes("/products") && queryElement) {
@@ -2073,9 +2084,3 @@
 
   initAll();
 })();
-
-// https://cdn.jsdelivr.net/gh/Vaghani-Rushal/shopify-app-assets@main/code_flags.png
-// https://cdn.jsdelivr.net/gh/Vaghani-Rushal/shopify-app-assets@main/code-flags.css
-// https://cdn.jsdelivr.net/gh/Vaghani-Rushal/shopify-app-assets@main/country-modal.css
-// https://cdn.jsdelivr.net/gh/Vaghani-Rushal/shopify-app-assets@main/my-app-block.css
-// https://cdn.jsdelivr.net/gh/Vaghani-Rushal/shopify-app-assets@main/my-app-block.js
