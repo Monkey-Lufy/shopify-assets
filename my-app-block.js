@@ -1,5 +1,5 @@
 (async function () {
-  function getCountryList() {
+  async function getCountryList() {
     return {
       af: "Afghanistan",
       ax: "Åland Islands",
@@ -1978,15 +1978,29 @@
         return;
       }
 
+      const countryList = await getCountryList();
+      let userLocationData = {
+        country_code: locationData?.country?.toLowerCase() || "us",
+        country_name: countryList[locationData?.country?.toLowerCase() || "us"],
+        region_name: locationData?.region || "",
+      };
+      if (!locationData) {
+        userLocationData = await getUserLocation();
+      }
+
       console.log("get the config and setting");
       console.log("config: ", config);
       console.log("settings: ", settings);
 
-      let container;
+      let container = "12";
+      console.log(
+        "🚀 ~ initScript ~ settings?.widget_layout?.placement_method:",
+        settings?.widget_layout?.placement_method
+      );
       if (settings?.widget_layout?.placement_method === "theme2") {
-        container = document.querySelector(".shop-cms-widget_app_block");
+        container = await document.querySelector(".shop-cms-widget_app_block");
       } else if (settings?.widget_layout?.placement_method === "manual") {
-        container = document.querySelector(".shop-cms-widget_manual");
+        container = await document.querySelector(".shop-cms-widget_manual");
       } else if (settings?.widget_layout?.placement_method === "automatic") {
         // List of all possible selectors for Add-to-Cart forms and buttons
         const addToCartSelectors = [
@@ -2064,24 +2078,14 @@
         await addContainer(
           container,
           queryContainer,
-          settings?.widget_layout?.placement_position,
-          settings?.widget_layout?.query_placement_position
+          settings?.widget_layout?.query_placement_position,
+          settings?.widget_layout?.query_placement_inside_position
         );
       }
 
       if (!container) return;
 
       console.log("got the container", container);
-
-      const countryList = getCountryList();
-      let userLocationData = {
-        country_code: locationData?.country?.toLowerCase() || "us",
-        country_name: countryList[locationData?.country?.toLowerCase() || "us"],
-        region_name: locationData?.region || "",
-      };
-      if (!locationData) {
-        userLocationData = await getUserLocation();
-      }
 
       renderWidget(container, config, userLocationData);
     } catch (error) {
