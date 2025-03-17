@@ -1900,37 +1900,29 @@
     }
   }
 
-  async function addContainer(container, selectors, position, atEnd = true) {
-    // Find the Add-to-Cart element
-    let queryElement = document.querySelector(selectors.join(", "));
-
-    // If there's a "product-form" element, find its child form that submits to "/cart/add"
-    if (document.querySelectorAll("product-form").length === 1) {
-      let productForm = document
-        .querySelector("product-form")
-        .querySelector('form[action*="/cart/add"]');
-      if (productForm) {
-        queryElement = productForm;
-      }
-    }
-
-    console.log("🚀 ~ addContainer ~ queryElement:", queryElement);
+  async function addContainer(
+    container,
+    queryContainer,
+    position,
+    queryPosition = ""
+  ) {
+    console.log("🚀 ~ addContainer ~ queryElement:", queryContainer);
 
     // Ensure we're on a product page before proceeding
-    if (window.location.pathname.includes("/products") && queryElement) {
+    if (window.location.pathname.includes("/products") && queryContainer) {
       // Insert the custom container BEFORE or AFTER the Add-to-Cart form/button
       if (position === "above") {
-        queryElement.parentNode.insertBefore(container, queryElement);
+        queryContainer.parentNode.insertBefore(container, queryContainer);
       } else if (position === "below") {
-        queryElement.parentNode.insertBefore(
+        queryContainer.parentNode.insertBefore(
           container,
-          queryElement.nextSibling
+          queryContainer.nextSibling
         );
       } else {
-        if (atEnd) {
-          queryElement.appendChild(container);
+        if (queryPosition === "start") {
+          queryContainer.insertBefore(container, queryContainer.firstChild);
         } else {
-          queryElement.insertBefore(container, queryElement.firstChild);
+          queryContainer.appendChild(container);
         }
       }
     } else {
@@ -2038,22 +2030,42 @@
           tag: "div",
           attributes: { class: "shop-cms-widget_auto" },
         });
+
+        // Find the Add-to-Cart element
+        let queryContainer = document.querySelector(
+          addToCartSelectors.join(", ")
+        );
+
+        // If there's a "product-form" element, find its child form that submits to "/cart/add"
+        if (document.querySelectorAll("product-form").length === 1) {
+          let productForm = document
+            .querySelector("product-form")
+            .querySelector('form[action*="/cart/add"]');
+          if (productForm) {
+            queryContainer = productForm;
+          }
+        }
+
         await addContainer(
           container,
-          addToCartSelectors,
-          settings?.widget_layout?.placement_position,
-          false
+          queryContainer,
+          settings?.widget_layout?.placement_position
         );
       } else if (settings?.widget_layout?.placement_method === "query") {
         container = await createElem({
           tag: "div",
           attributes: { class: "shop-cms-widget_query" },
         });
+
+        let queryContainer = document.querySelector(
+          settings?.widget_layout?.query
+        );
+
         await addContainer(
           container,
-          [settings?.widget_layout?.query],
+          queryContainer,
           settings?.widget_layout?.placement_position,
-          false
+          settings?.widget_layout?.query_placement_position
         );
       }
 
@@ -2084,3 +2096,9 @@
 
   initAll();
 })();
+
+// https://cdn.jsdelivr.net/gh/Vaghani-Rushal/shopify-app-assets@main/code_flags.png
+// https://cdn.jsdelivr.net/gh/Vaghani-Rushal/shopify-app-assets@main/code-flags.css
+// https://cdn.jsdelivr.net/gh/Vaghani-Rushal/shopify-app-assets@main/country-modal.css
+// https://cdn.jsdelivr.net/gh/Vaghani-Rushal/shopify-app-assets@main/my-app-block.css
+// https://cdn.jsdelivr.net/gh/Vaghani-Rushal/shopify-app-assets@main/my-app-block.js
