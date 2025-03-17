@@ -1910,7 +1910,7 @@
         .querySelector("product-form")
         .querySelector('form[action*="/cart/add"]');
       if (productForm) {
-        queryElement = [productForm];
+        queryElement = productForm;
       }
     }
 
