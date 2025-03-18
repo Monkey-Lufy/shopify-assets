@@ -1695,6 +1695,21 @@
 
   async function renderWidget(container, config, userLocationData) {
     try {
+        
+
+      if (config?.cart_checkout_setting?.mode === "custom") {
+        const tokenValues = await getTokensValue(config, userLocationData);
+        const parsedDescription = replaceTokenPlaceholders(
+          config?.cart_checkout_setting?.description,
+          tokenValues
+        );
+
+        await addCartWidget(
+          config?.cart_checkout_setting?.title,
+          parsedDescription
+        );
+      }
+
       const countryModal = await renderCountryModal(
         config.country_advanced_modal_setting,
         config.country_advanced_modal_appearance
@@ -1906,8 +1921,6 @@
     position,
     queryPosition = ""
   ) {
-    console.log("🚀 ~ addContainer ~ queryElement:", queryContainer);
-
     // Ensure we're on a product page before proceeding
     if (window.location.pathname.includes("/products") && queryContainer) {
       // Insert the custom container BEFORE or AFTER the Add-to-Cart form/button
@@ -1932,6 +1945,34 @@
     }
   }
 
+  async function addCartWidget(title, description) {
+    let formSelectors = ['form[action*="/cart/add"]'];
+    let addToCartForms = Array.from(document.querySelectorAll(formSelectors));
+
+    // Check if there's a "product-form" element
+    if (document.querySelectorAll("product-form").length === 1) {
+      let productForm = document
+        .querySelector("product-form")
+        .querySelector('form[action*="/cart/add"]');
+      if (productForm) {
+        addToCartForms = [productForm];
+      }
+    }
+
+    addToCartForms.forEach(async (form) => {
+      const inputField = await createElem({
+        tag: "input",
+        attributes: {
+          type: "hidden",
+          class: "delivery-hidden",
+          name: `properties[${title}]`,
+          value: `${description}`,
+        },
+      });
+      form.insertBefore(inputField, form.firstChild);
+    });
+  }
+
   async function initStyles() {
     const cssUrls = [
       "https://cdn.jsdelivr.net/gh/Vaghani-Rushal/shopify-app-assets@main/code-flags.css",
@@ -1947,20 +1988,8 @@
   async function initScript() {
     try {
       // Get product ID from Liquid (if available)
-      console.log("function calling");
-      let productId = window?.shopifyProductId || null;
-      let shop = window?.shopifyShop || null;
-
-      console.log("get the shops and productId");
-
-      if (!shop) {
-        shop = await getShop();
-      }
-
-      // If product ID is not passed via Liquid, try dynamic detection
-      if (!productId) {
-        productId = await getProductId();
-      }
+      let productId = productId = await getProductId();
+      let shop = shop = await getShop();
 
       // If shop or product ID is still missing, exit
       if (!productId || !shop) {
@@ -1988,15 +2017,7 @@
         userLocationData = await getUserLocation();
       }
 
-      console.log("get the config and setting");
-      console.log("config: ", config);
-      console.log("settings: ", settings);
-
       let container = "12";
-      console.log(
-        "🚀 ~ initScript ~ settings?.widget_layout?.placement_method:",
-        settings?.widget_layout?.placement_method
-      );
       if (settings?.widget_layout?.placement_method === "theme2") {
         container = await document.querySelector(".shop-cms-widget_app_block");
       } else if (settings?.widget_layout?.placement_method === "manual") {
@@ -2084,8 +2105,6 @@
       }
 
       if (!container) return;
-
-      console.log("got the container", container);
 
       renderWidget(container, config, userLocationData);
     } catch (error) {
