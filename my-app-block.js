@@ -1695,8 +1695,6 @@
 
   async function renderWidget(container, config, userLocationData) {
     try {
-        
-
       if (config?.cart_checkout_setting?.mode === "custom") {
         const tokenValues = await getTokensValue(config, userLocationData);
         const parsedDescription = replaceTokenPlaceholders(
@@ -1988,8 +1986,8 @@
   async function initScript() {
     try {
       // Get product ID from Liquid (if available)
-      let productId = productId = await getProductId();
-      let shop = shop = await getShop();
+      let productId = await getProductId();
+      let shop = await getShop();
 
       // If shop or product ID is still missing, exit
       if (!productId || !shop) {
