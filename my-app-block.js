@@ -1060,7 +1060,7 @@
     });
   }
 
-  async function replaceTokensTextMessage(config) {
+  async function replaceTokensTextMessage(config, message) {
     const widgetMessageTextStyle = config.widget_message_text_appearance;
 
     const tokenCss = {
@@ -1076,7 +1076,7 @@
     };
 
     const replacedTextMessage = await replacePlaceholders(
-      config.widget_message_text_info,
+      message,
       tokenCss,
       iconCss
     );
@@ -1134,7 +1134,7 @@
       ".country-modal-content .country-option-list"
     );
 
-    const countryOptionsList = getCountryList();
+    const countryOptionsList = await getCountryList();
     let liHtml = "";
 
     const searchInput = document.querySelector(".country-search-input");
@@ -1237,12 +1237,19 @@
     }
   }
 
-  async function createTextWidget(config, userLocationData) {
+  async function createTextWidget(
+    config,
+    userLocationData,
+    isOutOfStockMessage = false
+  ) {
     const widgetMessageTextStyle = config.widget_message_text_appearance;
 
     const textMessageWidget = await createElem({
       tag: "div",
       attributes: {
+        id: isOutOfStockMessage
+          ? "out-of-stock-message-widget"
+          : "text-message-widget",
         className: "text-message-widget",
         style: {
           borderWidth: `${widgetMessageTextStyle.border.width}px`,
@@ -1274,7 +1281,10 @@
 
     textMessageWidget.appendChild(spanWrapper);
 
-    const textMessage = await replaceTokensTextMessage(config);
+    let message = isOutOfStockMessage
+      ? config.widget_out_of_stock_info
+      : config.widget_message_text_info;
+    const textMessage = await replaceTokensTextMessage(config, message);
 
     const tokenValues = await getTokensValue(config, userLocationData);
     const parsedTextMessage = replaceTokenPlaceholders(
@@ -1391,6 +1401,7 @@
     const progressBarWidgetBox = await createElem({
       tag: "div",
       attributes: {
+        id: "progress-bar-widget",
         style: {
           margin: `${widgetProgressBarStyle.other.margin[0]}px ${widgetProgressBarStyle.other.margin[1]}px ${widgetProgressBarStyle.other.margin[2]}px ${widgetProgressBarStyle.other.margin[3]}px`,
           padding: `${widgetProgressBarStyle.other.padding[0]}px ${widgetProgressBarStyle.other.padding[1]}px ${widgetProgressBarStyle.other.padding[2]}px ${widgetProgressBarStyle.other.padding[3]}px`,
@@ -1536,6 +1547,7 @@
     const progressBarWidgetBox = await createElem({
       tag: "div",
       attributes: {
+        id: "progress-bar-widget",
         style: {
           margin: `${widgetProgressBarStyle.other.margin[0]}px ${widgetProgressBarStyle.other.margin[1]}px ${widgetProgressBarStyle.other.margin[2]}px ${widgetProgressBarStyle.other.margin[3]}px`,
           padding: `${widgetProgressBarStyle.other.padding[0]}px ${widgetProgressBarStyle.other.padding[1]}px ${widgetProgressBarStyle.other.padding[2]}px ${widgetProgressBarStyle.other.padding[3]}px`,
@@ -1695,33 +1707,24 @@
 
   async function renderWidget(container, config, userLocationData) {
     try {
-      if (config?.cart_checkout_setting?.mode === "custom") {
-        const tokenValues = await getTokensValue(config, userLocationData);
-        const parsedDescription = replaceTokenPlaceholders(
-          config?.cart_checkout_setting?.description,
-          tokenValues
-        );
+      // Check if the product is available
+      const isProductAvailable = await getProductAvailability();
 
-        await addCartWidget(
-          config?.cart_checkout_setting?.title,
-          parsedDescription
-        );
-      }
-
+      // Render the Country Modal
       const countryModal = await renderCountryModal(
         config.country_advanced_modal_setting,
         config.country_advanced_modal_appearance
       );
-      container.appendChild(countryModal);
+      await container.appendChild(countryModal);
 
       const widgetBox = await createWidgetBox(config.widget_box_appearnace);
       const textMessageWidget = await createTextWidget(
         config,
-        userLocationData
+        userLocationData,
+        false // isOutOfStockMessage
       );
 
       let progressBarWidget;
-
       if (config.widget_progress_bar_mode === "basic") {
         progressBarWidget = await createBasicProgressBarWidget(
           config,
@@ -1750,12 +1753,46 @@
         }
       }
 
+      // Append the widget box to the container
+
+      if (config?.widget_out_of_stock_mode === "custom") {
+        const outOfStockMessageWidget = await createTextWidget(
+          config,
+          userLocationData,
+          true // isOutOfStockMessage
+        );
+        widgetBox.appendChild(outOfStockMessageWidget);
+        if (isProductAvailable) {
+          outOfStockMessageWidget.style.display = "none";
+        }
+      }
+
       container.appendChild(widgetBox);
+
+      if (!isProductAvailable) {
+        textMessageWidget.style.display = "none";
+        progressBarWidget.style.display = "none";
+      }
+
       updateAdvancedCountryModal();
       updateCountry(
         userLocationData.country_code,
         userLocationData.country_name
       );
+
+      // Render the cart widget
+      if (config?.cart_checkout_setting?.mode === "custom") {
+        const tokenValues = await getTokensValue(config, userLocationData);
+        const parsedDescription = replaceTokenPlaceholders(
+          config?.cart_checkout_setting?.description,
+          tokenValues
+        );
+
+        await addCartWidget(
+          config?.cart_checkout_setting?.title,
+          parsedDescription
+        );
+      }
     } catch (error) {
       console.error("Error rendering widget:", error);
       container.innerHTML = "<p>Failed to load widget.</p>";
@@ -1818,6 +1855,75 @@
     } catch (error) {
       console.error("Error fetching product ID by handle:", error);
       return null;
+    }
+  }
+
+  // Get the product handle
+  async function getProductHandle() {
+    try {
+      // Option 1: Extract from URL (if URL follows standard product path)
+      const handle = window.location.pathname.match(/\/products\/([\w-]+)/);
+      if (handle) {
+        return handle[1];
+      }
+
+      // Option 2: Extract from meta tag
+      let metaTag = document.querySelector('meta[property="og:url"]');
+      if (metaTag) {
+        let url = new URL(metaTag.content);
+        let pathParts = url.pathname.split("/");
+        if (pathParts.includes("products")) {
+          let productHandle = pathParts[pathParts.indexOf("products") + 1];
+
+          if (productHandle) {
+            return productHandle;
+          }
+        }
+      }
+
+      return null;
+    } catch (error) {
+      console.error("Error getting product handle:", error);
+      return null;
+    }
+  }
+
+  // Get the availability of the product
+  async function getProductAvailability() {
+    try {
+      const productHandle = await getProductHandle();
+      if (!productHandle) {
+        return null;
+      }
+
+      const response = await fetch(`/products/${productHandle}.js`);
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+
+      const productData = await response.json();
+
+      if (!productData.available) {
+        return false;
+      }
+
+      const selectedVariantId = await ShopifyAnalytics?.meta?.selectedVariantId;
+
+      if (selectedVariantId) {
+        const selectedVariantData = await productData?.variants?.find(
+          (variant) => variant?.id == selectedVariantId
+        );
+
+        if (selectedVariantData && !selectedVariantData?.available) {
+          return false;
+        }
+      }
+
+      // Return product availability
+      return productData?.available;
+    } catch (error) {
+      console.error("Error getting product availability:", error);
+      return false;
     }
   }
 
@@ -2116,10 +2222,43 @@
   }
 
   initAll();
-})();
 
-// https://cdn.jsdelivr.net/gh/Vaghani-Rushal/shopify-app-assets@main/code_flags.png
-// https://cdn.jsdelivr.net/gh/Vaghani-Rushal/shopify-app-assets@main/code-flags.css
-// https://cdn.jsdelivr.net/gh/Vaghani-Rushal/shopify-app-assets@main/country-modal.css
-// https://cdn.jsdelivr.net/gh/Vaghani-Rushal/shopify-app-assets@main/my-app-block.css
-// https://cdn.jsdelivr.net/gh/Vaghani-Rushal/shopify-app-assets@main/my-app-block.js
+  function detectVariantChange() {
+    const productForms = document.querySelectorAll("form[action*='/cart/add']");
+
+    if (!productForms.length) return;
+
+    productForms.forEach((form) => {
+      form.addEventListener("change", () => {
+        const selectedVariantId = form.querySelector("[name='id']")?.value;
+        if (selectedVariantId) {
+          handleVariantChange();
+        }
+      });
+    });
+  }
+  async function handleVariantChange() {
+    const isProductAvailable = await getProductAvailability();
+    const textMessageWidget = document.querySelector("#text-message-widget");
+    const outOfStockMessageWidget = document.querySelector(
+      "#out-of-stock-message-widget"
+    );
+    const progressBarWidget = document.querySelector("#progress-bar-widget");
+
+    if (isProductAvailable) {
+      if (outOfStockMessageWidget) {
+        outOfStockMessageWidget.style.display = "none";
+      }
+      textMessageWidget.style.display = "block";
+      progressBarWidget.style.display = "block";
+    } else {
+      if (outOfStockMessageWidget) {
+        outOfStockMessageWidget.style.display = "block";
+      }
+      textMessageWidget.style.display = "none";
+      progressBarWidget.style.display = "none";
+    }
+  }
+
+  detectVariantChange();
+})();
