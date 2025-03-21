@@ -1,709 +1,5 @@
 (async function () {
-  async function getCountryList() {
-    return {
-      af: "Afghanistan",
-      ax: "Åland Islands",
-      al: "Albania",
-      dz: "Algeria",
-      as: "American Samoa",
-      ad: "Andorra",
-      ao: "Angola",
-      ai: "Anguilla",
-      aq: "Antarctica",
-      ag: "Antigua and Barbuda",
-      ar: "Argentina",
-      am: "Armenia",
-      aw: "Aruba",
-      au: "Australia",
-      at: "Austria",
-      az: "Azerbaijan",
-      bs: "Bahamas",
-      bh: "Bahrain",
-      bd: "Bangladesh",
-      bb: "Barbados",
-      by: "Belarus",
-      be: "Belgium",
-      bz: "Belize",
-      bj: "Benin",
-      bm: "Bermuda",
-      bt: "Bhutan",
-      bo: "Bolivia (Plurinational State of)",
-      bq: "Bonaire, Sint Eustatius and Sab",
-      ba: "Bosnia and Herzegovina",
-      bw: "Botswana",
-      bv: "Bouvet Island",
-      br: "Brazil",
-      io: "British Indian Ocean Territory",
-      bn: "Brunei Darussalam",
-      bg: "Bulgaria",
-      bf: "Burkina Faso",
-      bi: "Burundi",
-      kh: "Cambodia",
-      cm: "Cameroon",
-      ca: "Canada",
-      cv: "Cape Verde",
-      ky: "Cayman Islands",
-      cf: "Central African Republic",
-      td: "Chad",
-      cl: "Chile",
-      cn: "China",
-      cx: "Christmas Island",
-      cc: "Cocos (Keeling) Islands",
-      co: "Colombia",
-      km: "Comoros",
-      cg: "Congo",
-      cd: "Congo (Democratic Republic of the)",
-      ck: "Cook Islands",
-      cr: "Costa Rica",
-      hr: "Croatia",
-      cu: "Cuba",
-      cw: "Curaçao",
-      cy: "Cyprus",
-      cz: "Czech Republic",
-      ci: "Côte d'Ivoire",
-      dk: "Denmark",
-      dj: "Djibouti",
-      dm: "Dominica",
-      do: "Dominican Republic",
-      ec: "Ecuador",
-      eg: "Egypt",
-      sv: "El Salvador",
-      gq: "Equatorial Guinea",
-      er: "Eritrea",
-      ee: "Estonia",
-      et: "Ethiopia",
-      fk: "Falkland Islands (Malvinas)",
-      fo: "Faroe Islands",
-      fj: "Fiji",
-      fi: "Finland",
-      fr: "France",
-      gf: "French Guiana",
-      tf: "French Southern Territories",
-      pf: "French polynesia",
-      ga: "Gabon",
-      gm: "Gambia",
-      ge: "Georgia",
-      de: "Germany",
-      gh: "Ghana",
-      gi: "Gibraltar",
-      gr: "Greece",
-      gl: "Greenland",
-      gd: "Grenada",
-      gp: "Guadeloupe",
-      gu: "Guam",
-      gt: "Guatemala",
-      gg: "Guernsey",
-      gn: "Guinea",
-      gw: "Guinea-Bissau",
-      gy: "Guyana",
-      ht: "Haiti",
-      hm: "Heard Island and McDonald Islands",
-      va: "Holy See",
-      hn: "Honduras",
-      hk: "Hong Kong",
-      hu: "Hungary",
-      is: "Iceland",
-      in: "India",
-      id: "Indonesia",
-      ir: "Iran (Islamic Republic of",
-      iq: "Iraq",
-      ie: "Ireland",
-      im: "Isle of Man",
-      il: "Israel",
-      it: "Italy",
-      jm: "Jamaica",
-      jp: "Japan",
-      je: "Jersey",
-      jo: "Jordan",
-      kz: "Kazakhstan",
-      ke: "Kenya",
-      ki: "Kiribati",
-      kp: "Korea (Democratic People's Republic of)",
-      kr: "Korea (Republic of)",
-      kw: "Kuwait",
-      kg: "Kyrgyzstan",
-      la: "Lao People's Democratic Republic",
-      lv: "Latvia",
-      lb: "Lebanon",
-      ls: "Lesotho",
-      lr: "Liberia",
-      ly: "Libya",
-      li: "Liechtenstein",
-      lt: "Lithuania",
-      lu: "Luxembourg",
-      mo: "Macao",
-      mk: "Macedonia (the former Yugoslav Republic of)",
-      mg: "Madagascar",
-      mw: "Malawi",
-      my: "Malaysia",
-      mv: "Maldives",
-      ml: "Mali",
-      mt: "Malta",
-      mh: "Marshall islands",
-      mq: "Martinique",
-      mr: "Mauritania",
-      mu: "Mauritius",
-      yt: "Mayotte",
-      mx: "Mexico",
-      fm: "Micronesia (Federated States of)",
-      md: "Moldova (Republic of)",
-      mc: "Monaco",
-      mn: "Mongolia",
-      me: "Montenegro",
-      ms: "Montserrat",
-      ma: "Morocco",
-      mz: "Mozambique",
-      mm: "Myanmar",
-      na: "Namibia",
-      nr: "Nauru",
-      np: "Nepal",
-      nl: "Netherlands",
-      nc: "New Caledonia",
-      nz: "New Zealand",
-      ni: "Nicaragua",
-      ne: "Niger",
-      ng: "Nigeria",
-      nu: "Niue",
-      nf: "Norfolk Island",
-      mp: "Northern Mariana Islands",
-      no: "Norway",
-      om: "Oman",
-      pk: "Pakistan",
-      pw: "Palau",
-      ps: "Palestine, State of",
-      pa: "Panama",
-      pg: "Papua New Guinea",
-      py: "Paraguay",
-      pe: "Peru",
-      ph: "Philippines",
-      pn: "Pitcairn",
-      pl: "Poland",
-      pt: "Portugal",
-      pr: "Puerto Rico",
-      qa: "Qatar",
-      xk: "Republic of Kosovo",
-      ro: "Romania",
-      ru: "Russian Federation",
-      rw: "Rwanda",
-      re: "Réunion",
-      bl: "Saint Barthélemy",
-      sh: "Saint Helena, Ascension and Tristan da Cunha",
-      kn: "Saint Kitts and Nevis",
-      lc: "Saint Lucia",
-      mf: "Saint Martin (French part)",
-      pm: "Saint Pierre and Miquelon",
-      vc: "Saint Vincent and the Grenadines",
-      ws: "Samoa",
-      sm: "San Marino",
-      st: "Sao Tome and Principe",
-      sa: "Saudi Arabia",
-      sn: "Senegal",
-      rs: "Serbia",
-      sc: "Seychelles",
-      sl: "Sierra Leone",
-      sg: "Singapore",
-      sx: "Sint Maarten (Dutch part)",
-      sk: "Slovakia",
-      si: "Slovenia",
-      sb: "Solomon Islands",
-      so: "Somalia",
-      za: "South Africa",
-      gs: "South Georgia and the South Sandwich Islands",
-      ss: "South Sudan",
-      es: "Spain",
-      lk: "Sri Lanka",
-      sd: "Sudan",
-      sr: "Suriname",
-      sj: "Svalbard and Jan Mayen",
-      sz: "Swaziland",
-      se: "Sweden",
-      ch: "Switzerland",
-      sy: "Syrian Arab Republic",
-      tw: "Taiwan",
-      tj: "Tajikistan",
-      tz: "Tanzania",
-      th: "Thailand",
-      tl: "Timor-Leste",
-      tg: "Togo",
-      tk: "Tokelau",
-      to: "Tonga",
-      tt: "Trinidad and Tobago",
-      tn: "Tunisia",
-      tr: "Turkey",
-      tm: "Turkmenistan",
-      tc: "Turks and Caicos Islands",
-      tv: "Tuvalu",
-      ug: "Uganda",
-      ua: "Ukraine",
-      ae: "United Arab Emirates",
-      gb: "United Kingdom of Great Britain and Northern Ireland",
-      um: "United States Minor Outlying Islands",
-      us: "United States",
-      uy: "Uruguay",
-      uz: "Uzbekistan",
-      vu: "Vanuatu",
-      ve: "Venezuela (Bolivarian Republic of)",
-      vn: "Viet",
-      vg: "Virgin Islands (British)",
-      vi: "Virgin Islands (U.S.)",
-      wf: "Wallis and Futuna",
-      eh: "Western Sahara",
-      ye: "Yemen",
-      zm: "Zambia",
-      zw: "Zimbabwe",
-    };
-  }
-
-  // ------------------------------ DOM HELPER FUNCTIONS ------------------------------
-  async function createElem({
-    tag,
-    appendTo,
-    children = [],
-    attributes = {},
-    events = {},
-  }) {
-    const element = document.createElement(tag);
-
-    Object.entries(attributes).forEach(([key, value]) => {
-      if (key === "style" && typeof value === "object") {
-        Object.entries(value).forEach(([styleKey, styleValue]) => {
-          element.style[styleKey] = styleValue;
-        });
-      } else if (key in element) {
-        element[key] = value;
-      } else {
-        element.setAttribute(key, value);
-      }
-    });
-
-    Object.entries(events).forEach(([event, handler]) => {
-      element.addEventListener(event, handler);
-    });
-
-    const fragment = document.createDocumentFragment();
-    children.forEach((child) => fragment.appendChild(child));
-
-    element.appendChild(fragment);
-
-    if (appendTo) {
-      appendTo.appendChild(element);
-    }
-
-    return element;
-  }
-
-  async function insertStryleTag(cssUrl) {
-    const link = document.createElement("link");
-    link.rel = "stylesheet";
-    link.href = cssUrl;
-    document.head.appendChild(link);
-  }
-
-  // ------------------------------ DATE AND TIME HELPER FUNCTIONS ------------------------------
-  function formatDateInISO(givenDate) {
-    const inputDate = new Date(givenDate);
-    const year = inputDate.getFullYear();
-    const month = String(inputDate.getMonth() + 1).padStart(2, "0");
-    const day = String(inputDate.getDate()).padStart(2, "0");
-
-    const formattedDate = `${year}-${month}-${day}`;
-    return formattedDate;
-  }
-
-  function toDateFormat(currDate, dateFormat, variableTranslate) {
-    const shortMonths = [
-      "Jan",
-      "Feb",
-      "Mar",
-      "Apr",
-      "May",
-      "Jun",
-      "Jul",
-      "Aug",
-      "Sep",
-      "Oct",
-      "Nov",
-      "Dec",
-    ];
-    const longMonths = [
-      "January",
-      "February",
-      "March",
-      "April",
-      "May",
-      "June",
-      "July",
-      "August",
-      "September",
-      "October",
-      "November",
-      "December",
-    ];
-    const shortDays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-    const longDays = [
-      "Sunday",
-      "Monday",
-      "Tuesday",
-      "Wednesday",
-      "Thursday",
-      "Friday",
-      "Saturday",
-    ];
-
-    const format =
-      dateFormat.format !== "custom"
-        ? dateFormat.format
-        : dateFormat.custom_format;
-    const zero_pad = dateFormat.zero_pad;
-
-    const originalDate = new Date(currDate);
-    const date = zero_pad
-      ? String(originalDate.getDate()).padStart(2, "0")
-      : String(originalDate.getDate());
-    const date_advanced =
-      originalDate.getDate() +
-      (originalDate.getDate() % 10 === 1 && originalDate.getDate() !== 11
-        ? "st"
-        : originalDate.getDate() % 10 === 2 && originalDate.getDate() !== 12
-          ? "nd"
-          : originalDate.getDate() % 10 === 3 && originalDate.getDate() !== 13
-            ? "rd"
-            : "th");
-    const month = zero_pad
-      ? String(originalDate.getMonth() + 1).padStart(2, "0")
-      : String(originalDate.getMonth() + 1);
-    const month_short = shortMonths[originalDate.getMonth()];
-    const month_full = longMonths[originalDate.getMonth()];
-    const month_label = variableTranslate.months[originalDate.getMonth()];
-    const weekday_short = shortDays[originalDate.getDay()];
-    const weekday_full = longDays[originalDate.getDay()];
-    const weekday_label = variableTranslate.weekdays[originalDate.getDay()];
-    const year = originalDate.getFullYear();
-
-    return format
-      .replace(/{year}/g, String(year))
-      .replace(/{date}/g, date)
-      .replace(/{date_advanced}/g, String(date_advanced))
-      .replace(/{month}/g, month)
-      .replace(/{month_short}/g, month_short)
-      .replace(/{month_full}/g, month_full)
-      .replace(/{month_label}/g, month_label)
-      .replace(/{weekday_short}/g, weekday_short)
-      .replace(/{weekday_full}/g, weekday_full)
-      .replace(/{weekday_label}/g, weekday_label);
-  }
-
-  function toTimeFormat(totalSeconds, formatType, variableTranslate) {
-    const format =
-      formatType.format !== "custom"
-        ? formatType.format
-        : formatType.custom_format;
-    const zero_pad = formatType.zero_pad;
-
-    const hours = zero_pad
-      ? String(Math.floor(totalSeconds / 3600)).padStart(2, "0")
-      : String(Math.floor(totalSeconds / 3600));
-    const minutes = zero_pad
-      ? String(Math.floor((totalSeconds % 3600) / 60)).padStart(2, "0")
-      : String(Math.floor((totalSeconds % 3600) / 60));
-    const seconds = zero_pad
-      ? String(totalSeconds % 60).padStart(2, "0")
-      : String(totalSeconds % 60);
-
-    const labels = {
-      hours:
-        formatType.format === "custom"
-          ? variableTranslate.time_units.hours
-          : "Hours",
-      minutes:
-        formatType.format === "custom"
-          ? variableTranslate.time_units.minutes
-          : "Minutes",
-      seconds:
-        formatType.format === "custom"
-          ? variableTranslate.time_units.seconds
-          : "Seconds",
-    };
-
-    return format
-      .replace(/{hours}/g, hours)
-      .replace(/{minutes}/g, minutes)
-      .replace(/{seconds}/g, seconds)
-      .replace(/{hours_label}/g, labels.hours)
-      .replace(/{minutes_label}/g, labels.minutes)
-      .replace(/{seconds_label}/g, labels.seconds);
-  }
-
-  function convertToTimezone(date, timezone) {
-    const formatter = new Intl.DateTimeFormat("en-US", {
-      timeZone: timezone,
-      year: "numeric",
-      month: "2-digit",
-      day: "2-digit",
-      hour: "2-digit",
-      minute: "2-digit",
-      second: "2-digit",
-      hour12: false,
-    });
-
-    // Format the date
-    const formattedDate = formatter.formatToParts(date).reduce((acc, part) => {
-      if (part.type !== "literal") acc[part.type] = part.value;
-      return acc;
-    }, {});
-
-    return `${formattedDate.year}-${formattedDate.month}-${formattedDate.day} ${formattedDate.hour}:${formattedDate.minute}:${formattedDate.second}:00`;
-  }
-
-  function addDaysToDate(originalDate, daysToAdd) {
-    const newDate = new Date(originalDate);
-    newDate.setDate(newDate.getDate() + daysToAdd);
-    return newDate;
-  }
-
-  // ------------------------------ CALCULATION HELPER FUNCTIONS ------------------------------
-  function isWorkdayAndNotHoliday(date, workWeek, holidays) {
-    const dayOfWeek = date.getDay();
-    const formattedDate = formatDateInISO(date);
-    const ISOHolidays = holidays.map((holiday) => formatDateInISO(holiday));
-
-    return workWeek[dayOfWeek] === true && !ISOHolidays.includes(formattedDate);
-  }
-
-  async function calculateTokenValues(configData) {
-    function datesCalculation(configData, workingWeek, dayRange, calcMethod) {
-      let today = new Date();
-
-      if (configData?.timezone_setting?.mode === "custom") {
-        today = new Date(
-          convertToTimezone(today, configData?.timezone_setting?.timezone)
-        );
-      }
-
-      const holidays = configData?.holidays;
-      const cutoffTime = configData?.countdown_setting?.cutoff_time;
-      const cutoffTimeAdvancedEnabled =
-        configData?.countdown_setting?.advanced_enable;
-      const cutoffTimeAdvanced = configData?.countdown_setting?.advanced_time;
-      let iterationDate = new Date(today);
-
-      let minDaysToAddInMinDate = dayRange?.min;
-      let minDaysToAddInMaxDate = dayRange?.max - dayRange?.min;
-
-      let holidaysToAddInMinDate = 0;
-      let holidaysToAddInMaxDate = 0;
-
-      // If order is after cutoff time, move to next day
-      if (cutoffTimeAdvancedEnabled) {
-        if (
-          iterationDate.getHours() >
-            cutoffTimeAdvanced[iterationDate.getDay()]?.hours ||
-          (iterationDate.getHours() ===
-            cutoffTimeAdvanced[iterationDate.getDay()]?.hours &&
-            iterationDate.getMinutes() >=
-              cutoffTimeAdvanced[iterationDate.getDay()]?.minutes)
-        ) {
-          iterationDate = addDaysToDate(iterationDate, 1);
-          holidaysToAddInMinDate++;
-        }
-      } else {
-        if (
-          iterationDate.getHours() > cutoffTime?.hours ||
-          (iterationDate.getHours() === cutoffTime?.hours &&
-            iterationDate.getMinutes() >= cutoffTime?.minutes)
-        ) {
-          iterationDate = addDaysToDate(iterationDate, 1);
-          holidaysToAddInMinDate++;
-        }
-      }
-
-      // Calculate dates (min and max)
-      if (calcMethod !== "none") {
-        // Calculate min date
-        while (minDaysToAddInMinDate > 0) {
-          if (isWorkdayAndNotHoliday(iterationDate, workingWeek, holidays)) {
-            minDaysToAddInMinDate--;
-          } else {
-            holidaysToAddInMinDate++;
-          }
-          iterationDate = addDaysToDate(iterationDate, 1);
-        }
-
-        // Calculate max date (if minmax calculation is enabled)
-        if (calcMethod === "minmax") {
-          while (minDaysToAddInMaxDate > 0) {
-            if (isWorkdayAndNotHoliday(iterationDate, workingWeek, holidays)) {
-              minDaysToAddInMaxDate--;
-            } else {
-              holidaysToAddInMaxDate++;
-            }
-            iterationDate = addDaysToDate(iterationDate, 1);
-          }
-        }
-      }
-
-      // Calculate the final dates
-      const minimum_date = addDaysToDate(
-        today,
-        dayRange?.min - 1 + holidaysToAddInMinDate
-      );
-      const maximum_date = addDaysToDate(
-        minimum_date,
-        dayRange?.max - dayRange?.min + holidaysToAddInMaxDate
-      );
-
-      return { minimum_date, maximum_date };
-    }
-
-    const deliveryWorkingWeek = configData?.order_delivery_setting?.work_week;
-    const deliveryDayRange = configData?.order_delivery_setting?.day_range;
-    const deliveryCalcMethod =
-      configData?.order_delivery_setting?.calculation_method;
-
-    const {
-      minimum_date: order_delivery_minimum_date,
-      maximum_date: order_delivery_maximum_date,
-    } = datesCalculation(
-      configData,
-      deliveryWorkingWeek,
-      deliveryDayRange,
-      deliveryCalcMethod
-    );
-
-    const readyWorkingWeek = configData?.order_ready_setting?.work_week;
-    const readyDayRange = configData?.order_ready_setting?.day_range;
-    const readyCalcMethod = configData?.order_ready_setting?.calculation_method;
-
-    const {
-      minimum_date: order_ready_minimum_date,
-      maximum_date: order_ready_maximum_date,
-    } = datesCalculation(
-      configData,
-      readyWorkingWeek,
-      readyDayRange,
-      readyCalcMethod
-    );
-
-    return {
-      today_date: new Date(),
-      order_delivery_minimum_date,
-      order_delivery_maximum_date,
-      order_ready_minimum_date,
-      order_ready_maximum_date,
-    };
-  }
-
-  async function calculateTimeUntilNextCutoff(configData) {
-    let today = new Date();
-    if (configData?.timezone_setting?.mode === "custom") {
-      today = new Date(
-        convertToTimezone(today, configData?.timezone_setting?.timezone)
-      );
-    }
-
-    const holidays = configData?.holidays;
-    const cutoffTime = configData?.countdown_setting?.cutoff_time;
-    const cutoffTimeAdvancedEnabled =
-      configData?.countdown_setting?.advanced_enable;
-    const cutoffTimeAdvanced = configData?.countdown_setting?.advanced_time;
-
-    const workingWeek = configData?.order_ready_setting?.work_week;
-
-    let iterationDate = new Date(today);
-
-    // If order is after cutoff time, move to next day
-    if (cutoffTimeAdvancedEnabled) {
-      if (
-        iterationDate.getHours() >
-          cutoffTimeAdvanced[iterationDate.getDay()]?.hours ||
-        (iterationDate.getHours() ===
-          cutoffTimeAdvanced[iterationDate.getDay()]?.hours &&
-          iterationDate.getMinutes() >=
-            cutoffTimeAdvanced[iterationDate.getDay()]?.minutes)
-      ) {
-        iterationDate = addDaysToDate(iterationDate, 1);
-      }
-    } else {
-      if (
-        iterationDate.getHours() > cutoffTime?.hours ||
-        (iterationDate.getHours() === cutoffTime?.hours &&
-          iterationDate.getMinutes() >= cutoffTime?.minutes)
-      ) {
-        iterationDate = addDaysToDate(iterationDate, 1);
-      }
-    }
-
-    while (!isWorkdayAndNotHoliday(iterationDate, workingWeek, holidays)) {
-      iterationDate = addDaysToDate(iterationDate, 1);
-    }
-
-    let cutoffHours, cutoffMinutes;
-
-    if (cutoffTimeAdvancedEnabled) {
-      cutoffHours = cutoffTimeAdvanced[iterationDate.getDay()]?.hours;
-      cutoffMinutes = cutoffTimeAdvanced[iterationDate.getDay()]?.minutes;
-    } else {
-      cutoffHours = cutoffTime?.hours;
-      cutoffMinutes = cutoffTime?.minutes;
-    }
-
-    let cutoffDate = new Date(iterationDate);
-    cutoffDate.setHours(cutoffHours, cutoffMinutes, 0, 0);
-
-    return Math.floor((cutoffDate - today) / 1000);
-  }
-
-  // ------------------------------ Token Functions ------------------------------
-  async function getTokensValue(config, userLocationData) {
-    const tokenValues = await calculateTokenValues(config);
-
-    const countDownTime = await calculateTimeUntilNextCutoff(config);
-
-    const formattedTokenValues = {
-      advanced_country_flag: `icon-${userLocationData.country_code}_f`,
-      advanced_country_name: userLocationData.country_name,
-      country_flag: `icon-${userLocationData.country_code}_f`,
-      country_name: userLocationData.country_name,
-      countdown_time: toTimeFormat(
-        countDownTime,
-        config.time_format,
-        config.variable_language_translate
-      ),
-      today_date: toDateFormat(
-        tokenValues.today_date,
-        config.date_format,
-        config.variable_language_translate
-      ),
-      order_delivery_minimum_date: toDateFormat(
-        tokenValues.order_delivery_minimum_date,
-        config.date_format,
-        config.variable_language_translate
-      ),
-      order_delivery_maximum_date: toDateFormat(
-        tokenValues.order_delivery_maximum_date,
-        config.date_format,
-        config.variable_language_translate
-      ),
-      order_ready_minimum_date: toDateFormat(
-        tokenValues.order_ready_minimum_date,
-        config.date_format,
-        config.variable_language_translate
-      ),
-      order_ready_maximum_date: toDateFormat(
-        tokenValues.order_ready_maximum_date,
-        config.date_format,
-        config.variable_language_translate
-      ),
-    };
-
-    return formattedTokenValues;
-  }
-
-  function replaceTokenPlaceholders(text, values) {
-    return text?.replace(/{(\w+)}/g, (_, key) => values[key] || `{${key}}`);
-  }
-
-  // ------------------------------ SVG ICONS ------------------------------
+  // ------------------------------ Constnat and Variables ------------------------------
   function getSVGIconPath(iconName) {
     const SVG_ICONS = {
       address_0: {
@@ -1004,6 +300,664 @@
     return SVG_ICONS[iconName].svg_path;
   }
 
+  async function getCountryList() {
+    return {
+      af: { name: "Afghanistan", timezone: "Asia/Kabul" },
+      ax: { name: "Åland Islands", timezone: "Europe/Mariehamn" },
+      al: { name: "Albania", timezone: "Europe/Tirane" },
+      dz: { name: "Algeria", timezone: "Africa/Algiers" },
+      as: { name: "American Samoa", timezone: "Pacific/Pago_Pago" },
+      ad: { name: "Andorra", timezone: "Europe/Andorra" },
+      ao: { name: "Angola", timezone: "Africa/Luanda" },
+      ai: { name: "Anguilla", timezone: "America/Anguilla" },
+      aq: { name: "Antarctica", timezone: "Antarctica/Troll" },
+      ag: { name: "Antigua and Barbuda", timezone: "America/Antigua" },
+      ar: { name: "Argentina", timezone: "America/Argentina/Buenos_Aires" },
+      am: { name: "Armenia", timezone: "Asia/Yerevan" },
+      aw: { name: "Aruba", timezone: "America/Aruba" },
+      au: { name: "Australia", timezone: "Australia/Sydney" },
+      at: { name: "Austria", timezone: "Europe/Vienna" },
+      az: { name: "Azerbaijan", timezone: "Asia/Baku" },
+      bs: { name: "Bahamas", timezone: "America/Nassau" },
+      bh: { name: "Bahrain", timezone: "Asia/Bahrain" },
+      bd: { name: "Bangladesh", timezone: "Asia/Dhaka" },
+      bb: { name: "Barbados", timezone: "America/Barbados" },
+      by: { name: "Belarus", timezone: "Europe/Minsk" },
+      be: { name: "Belgium", timezone: "Europe/Brussels" },
+      bz: { name: "Belize", timezone: "America/Belize" },
+      bj: { name: "Benin", timezone: "Africa/Porto-Novo" },
+      bm: { name: "Bermuda", timezone: "Atlantic/Bermuda" },
+      bt: { name: "Bhutan", timezone: "Asia/Thimphu" },
+      bo: { name: "Bolivia", timezone: "America/La_Paz" },
+      bq: {
+        name: "Bonaire, Sint Eustatius and Saba",
+        timezone: "America/Kralendijk",
+      },
+      ba: { name: "Bosnia and Herzegovina", timezone: "Europe/Sarajevo" },
+      bw: { name: "Botswana", timezone: "Africa/Gaborone" },
+      br: { name: "Brazil", timezone: "America/Sao_Paulo" },
+      bg: { name: "Bulgaria", timezone: "Europe/Sofia" },
+      ca: { name: "Canada", timezone: "America/Toronto" },
+      cn: { name: "China", timezone: "Asia/Shanghai" },
+      co: { name: "Colombia", timezone: "America/Bogota" },
+      hr: { name: "Croatia", timezone: "Europe/Zagreb" },
+      cu: { name: "Cuba", timezone: "America/Havana" },
+      cy: { name: "Cyprus", timezone: "Asia/Nicosia" },
+      cz: { name: "Czech Republic", timezone: "Europe/Prague" },
+      dk: { name: "Denmark", timezone: "Europe/Copenhagen" },
+      eg: { name: "Egypt", timezone: "Africa/Cairo" },
+      fi: { name: "Finland", timezone: "Europe/Helsinki" },
+      fr: { name: "France", timezone: "Europe/Paris" },
+      de: { name: "Germany", timezone: "Europe/Berlin" },
+      gh: { name: "Ghana", timezone: "Africa/Accra" },
+      gr: { name: "Greece", timezone: "Europe/Athens" },
+      hk: { name: "Hong Kong", timezone: "Asia/Hong_Kong" },
+      hu: { name: "Hungary", timezone: "Europe/Budapest" },
+      is: { name: "Iceland", timezone: "Atlantic/Reykjavik" },
+      in: { name: "India", timezone: "Asia/Kolkata" },
+      id: { name: "Indonesia", timezone: "Asia/Jakarta" },
+      ir: { name: "Iran", timezone: "Asia/Tehran" },
+      iq: { name: "Iraq", timezone: "Asia/Baghdad" },
+      ie: { name: "Ireland", timezone: "Europe/Dublin" },
+      il: { name: "Israel", timezone: "Asia/Jerusalem" },
+      it: { name: "Italy", timezone: "Europe/Rome" },
+      jm: { name: "Jamaica", timezone: "America/Jamaica" },
+      jp: { name: "Japan", timezone: "Asia/Tokyo" },
+      ke: { name: "Kenya", timezone: "Africa/Nairobi" },
+      my: { name: "Malaysia", timezone: "Asia/Kuala_Lumpur" },
+      mx: { name: "Mexico", timezone: "America/Mexico_City" },
+      nl: { name: "Netherlands", timezone: "Europe/Amsterdam" },
+      nz: { name: "New Zealand", timezone: "Pacific/Auckland" },
+      ng: { name: "Nigeria", timezone: "Africa/Lagos" },
+      no: { name: "Norway", timezone: "Europe/Oslo" },
+      pk: { name: "Pakistan", timezone: "Asia/Karachi" },
+      ph: { name: "Philippines", timezone: "Asia/Manila" },
+      pl: { name: "Poland", timezone: "Europe/Warsaw" },
+      pt: { name: "Portugal", timezone: "Europe/Lisbon" },
+      qa: { name: "Qatar", timezone: "Asia/Qatar" },
+      ro: { name: "Romania", timezone: "Europe/Bucharest" },
+      ru: { name: "Russia", timezone: "Europe/Moscow" },
+      sa: { name: "Saudi Arabia", timezone: "Asia/Riyadh" },
+      sg: { name: "Singapore", timezone: "Asia/Singapore" },
+      za: { name: "South Africa", timezone: "Africa/Johannesburg" },
+      kr: { name: "South Korea", timezone: "Asia/Seoul" },
+      es: { name: "Spain", timezone: "Europe/Madrid" },
+      lk: { name: "Sri Lanka", timezone: "Asia/Colombo" },
+      se: { name: "Sweden", timezone: "Europe/Stockholm" },
+      ch: { name: "Switzerland", timezone: "Europe/Zurich" },
+      tw: { name: "Taiwan", timezone: "Asia/Taipei" },
+      th: { name: "Thailand", timezone: "Asia/Bangkok" },
+      tr: { name: "Turkey", timezone: "Europe/Istanbul" },
+      ae: { name: "United Arab Emirates", timezone: "Asia/Dubai" },
+      gb: { name: "United Kingdom", timezone: "Europe/London" },
+      us: { name: "United States", timezone: "America/New_York" },
+      vn: { name: "Vietnam", timezone: "Asia/Ho_Chi_Minh" },
+      ye: { name: "Yemen", timezone: "Asia/Aden" },
+      zm: { name: "Zambia", timezone: "Africa/Lusaka" },
+      zw: { name: "Zimbabwe", timezone: "Africa/Harare" },
+    };
+  }
+
+  // ------------------------------ DOM HELPER FUNCTIONS --------------------------------
+  async function createElem({
+    tag,
+    appendTo,
+    children = [],
+    attributes = {},
+    events = {},
+  }) {
+    const element = document.createElement(tag);
+
+    Object.entries(attributes).forEach(([key, value]) => {
+      if (key === "style" && typeof value === "object") {
+        Object.entries(value).forEach(([styleKey, styleValue]) => {
+          element.style[styleKey] = styleValue;
+        });
+      } else if (key in element) {
+        element[key] = value;
+      } else {
+        element.setAttribute(key, value);
+      }
+    });
+
+    Object.entries(events).forEach(([event, handler]) => {
+      element.addEventListener(event, handler);
+    });
+
+    const fragment = document.createDocumentFragment();
+    children.forEach((child) => fragment.appendChild(child));
+
+    element.appendChild(fragment);
+
+    if (appendTo) {
+      appendTo.appendChild(element);
+    }
+
+    return element;
+  }
+
+  async function insertStryleTag(cssUrl) {
+    const link = document.createElement("link");
+    link.rel = "stylesheet";
+    link.href = cssUrl;
+    document.head.appendChild(link);
+  }
+
+  // ------------------------------ DATE AND TIME HELPER FUNCTIONS --------------------------------
+  function formatDateInISO(givenDate) {
+    const inputDate = new Date(givenDate);
+    const year = inputDate.getFullYear();
+    const month = String(inputDate.getMonth() + 1).padStart(2, "0");
+    const day = String(inputDate.getDate()).padStart(2, "0");
+
+    const formattedDate = `${year}-${month}-${day}`;
+    return formattedDate;
+  }
+
+  function toDateFormat(currDate, dateFormat, variableTranslate) {
+    const shortMonths = [
+      "Jan",
+      "Feb",
+      "Mar",
+      "Apr",
+      "May",
+      "Jun",
+      "Jul",
+      "Aug",
+      "Sep",
+      "Oct",
+      "Nov",
+      "Dec",
+    ];
+    const longMonths = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
+    ];
+    const shortDays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+    const longDays = [
+      "Sunday",
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+    ];
+
+    const format =
+      dateFormat.format !== "custom"
+        ? dateFormat.format
+        : dateFormat.custom_format;
+    const zero_pad = dateFormat.zero_pad;
+
+    const originalDate = new Date(currDate);
+    const date = zero_pad
+      ? String(originalDate.getDate()).padStart(2, "0")
+      : String(originalDate.getDate());
+    const date_advanced =
+      originalDate.getDate() +
+      (originalDate.getDate() % 10 === 1 && originalDate.getDate() !== 11
+        ? "st"
+        : originalDate.getDate() % 10 === 2 && originalDate.getDate() !== 12
+          ? "nd"
+          : originalDate.getDate() % 10 === 3 && originalDate.getDate() !== 13
+            ? "rd"
+            : "th");
+    const month = zero_pad
+      ? String(originalDate.getMonth() + 1).padStart(2, "0")
+      : String(originalDate.getMonth() + 1);
+    const month_short = shortMonths[originalDate.getMonth()];
+    const month_full = longMonths[originalDate.getMonth()];
+    const month_label = variableTranslate.months[originalDate.getMonth()];
+    const weekday_short = shortDays[originalDate.getDay()];
+    const weekday_full = longDays[originalDate.getDay()];
+    const weekday_label = variableTranslate.weekdays[originalDate.getDay()];
+    const year = originalDate.getFullYear();
+
+    return format
+      .replace(/{year}/g, String(year))
+      .replace(/{date}/g, date)
+      .replace(/{date_advanced}/g, String(date_advanced))
+      .replace(/{month}/g, month)
+      .replace(/{month_short}/g, month_short)
+      .replace(/{month_full}/g, month_full)
+      .replace(/{month_label}/g, month_label)
+      .replace(/{weekday_short}/g, weekday_short)
+      .replace(/{weekday_full}/g, weekday_full)
+      .replace(/{weekday_label}/g, weekday_label);
+  }
+
+  function toTimeFormat(totalSeconds, formatType, variableTranslate) {
+    const format =
+      formatType.format !== "custom"
+        ? formatType.format
+        : formatType.custom_format;
+    const zero_pad = formatType.zero_pad;
+
+    const hours = zero_pad
+      ? String(Math.floor(totalSeconds / 3600)).padStart(2, "0")
+      : String(Math.floor(totalSeconds / 3600));
+    const minutes = zero_pad
+      ? String(Math.floor((totalSeconds % 3600) / 60)).padStart(2, "0")
+      : String(Math.floor((totalSeconds % 3600) / 60));
+    const seconds = zero_pad
+      ? String(totalSeconds % 60).padStart(2, "0")
+      : String(totalSeconds % 60);
+
+    const labels = {
+      hours:
+        formatType.format === "custom"
+          ? variableTranslate.time_units.hours
+          : "Hours",
+      minutes:
+        formatType.format === "custom"
+          ? variableTranslate.time_units.minutes
+          : "Minutes",
+      seconds:
+        formatType.format === "custom"
+          ? variableTranslate.time_units.seconds
+          : "Seconds",
+    };
+
+    return format
+      .replace(/{hours}/g, hours)
+      .replace(/{minutes}/g, minutes)
+      .replace(/{seconds}/g, seconds)
+      .replace(/{hours_label}/g, labels.hours)
+      .replace(/{minutes_label}/g, labels.minutes)
+      .replace(/{seconds_label}/g, labels.seconds);
+  }
+
+  function convertToTimezone(date, timezone) {
+    const formatter = new Intl.DateTimeFormat("en-US", {
+      timeZone: timezone,
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+      hour12: false,
+    });
+
+    // Format the date
+    const formattedDate = formatter.formatToParts(date).reduce((acc, part) => {
+      if (part.type !== "literal") acc[part.type] = part.value;
+      return acc;
+    }, {});
+
+    return `${formattedDate.year}-${formattedDate.month}-${formattedDate.day} ${formattedDate.hour}:${formattedDate.minute}:${formattedDate.second}:00`;
+  }
+
+  function addDaysToDate(originalDate, daysToAdd) {
+    const newDate = new Date(originalDate);
+    newDate.setDate(newDate.getDate() + daysToAdd);
+    return newDate;
+  }
+
+  // ------------------------------ CALCULATION HELPER FUNCTIONS ------------------------------
+  function isWorkdayAndNotHoliday(date, workWeek, holidays) {
+    const dayOfWeek = date.getDay();
+    const formattedDate = formatDateInISO(date);
+    const ISOHolidays = holidays.map((holiday) => formatDateInISO(holiday));
+
+    return workWeek[dayOfWeek] === true && !ISOHolidays.includes(formattedDate);
+  }
+
+  async function calculateTokenValues(configData, userTimezone = "") {
+    function datesCalculation(
+      configData,
+      workingWeek,
+      dayRange,
+      calcMethod,
+      userTimezone
+    ) {
+      let today = new Date();
+      if (userTimezone) {
+        today = new Date(convertToTimezone(today, userTimezone));
+      }
+
+      if (configData?.timezone_setting?.mode === "custom") {
+        today = new Date(
+          convertToTimezone(today, configData?.timezone_setting?.timezone)
+        );
+      }
+
+      const holidays = configData?.holidays;
+      const cutoffTime = configData?.countdown_setting?.cutoff_time;
+      const cutoffTimeAdvancedEnabled =
+        configData?.countdown_setting?.advanced_enable;
+      const cutoffTimeAdvanced = configData?.countdown_setting?.advanced_time;
+      let iterationDate = new Date(today);
+
+      let minDaysToAddInMinDate = dayRange?.min;
+      let minDaysToAddInMaxDate = dayRange?.max - dayRange?.min;
+
+      let holidaysToAddInMinDate = 0;
+      let holidaysToAddInMaxDate = 0;
+
+      // If order is after cutoff time, move to next day
+      if (cutoffTimeAdvancedEnabled) {
+        if (
+          iterationDate.getHours() >
+            cutoffTimeAdvanced[iterationDate.getDay()]?.hours ||
+          (iterationDate.getHours() ===
+            cutoffTimeAdvanced[iterationDate.getDay()]?.hours &&
+            iterationDate.getMinutes() >=
+              cutoffTimeAdvanced[iterationDate.getDay()]?.minutes)
+        ) {
+          iterationDate = addDaysToDate(iterationDate, 1);
+          holidaysToAddInMinDate++;
+        }
+      } else {
+        if (
+          iterationDate.getHours() > cutoffTime?.hours ||
+          (iterationDate.getHours() === cutoffTime?.hours &&
+            iterationDate.getMinutes() >= cutoffTime?.minutes)
+        ) {
+          iterationDate = addDaysToDate(iterationDate, 1);
+          holidaysToAddInMinDate++;
+        }
+      }
+
+      // Calculate dates (min and max)
+      if (calcMethod !== "none") {
+        // Calculate min date
+        while (minDaysToAddInMinDate > 0) {
+          if (isWorkdayAndNotHoliday(iterationDate, workingWeek, holidays)) {
+            minDaysToAddInMinDate--;
+          } else {
+            holidaysToAddInMinDate++;
+          }
+          iterationDate = addDaysToDate(iterationDate, 1);
+        }
+
+        // Calculate max date (if minmax calculation is enabled)
+        if (calcMethod === "minmax") {
+          while (minDaysToAddInMaxDate > 0) {
+            if (isWorkdayAndNotHoliday(iterationDate, workingWeek, holidays)) {
+              minDaysToAddInMaxDate--;
+            } else {
+              holidaysToAddInMaxDate++;
+            }
+            iterationDate = addDaysToDate(iterationDate, 1);
+          }
+        }
+      }
+
+      // Calculate the final dates
+      const minimum_date = addDaysToDate(
+        today,
+        dayRange?.min - 1 + holidaysToAddInMinDate
+      );
+      const maximum_date = addDaysToDate(
+        minimum_date,
+        dayRange?.max - dayRange?.min + holidaysToAddInMaxDate
+      );
+
+      return { minimum_date, maximum_date };
+    }
+
+    const deliveryWorkingWeek = configData?.order_delivery_setting?.work_week;
+    const deliveryDayRange = configData?.order_delivery_setting?.day_range;
+    const deliveryCalcMethod =
+      configData?.order_delivery_setting?.calculation_method;
+
+    const {
+      minimum_date: order_delivery_minimum_date,
+      maximum_date: order_delivery_maximum_date,
+    } = datesCalculation(
+      configData,
+      deliveryWorkingWeek,
+      deliveryDayRange,
+      deliveryCalcMethod,
+      userTimezone
+    );
+
+    const readyWorkingWeek = configData?.order_ready_setting?.work_week;
+    const readyDayRange = configData?.order_ready_setting?.day_range;
+    const readyCalcMethod = configData?.order_ready_setting?.calculation_method;
+
+    const {
+      minimum_date: order_ready_minimum_date,
+      maximum_date: order_ready_maximum_date,
+    } = datesCalculation(
+      configData,
+      readyWorkingWeek,
+      readyDayRange,
+      readyCalcMethod,
+      userTimezone
+    );
+
+    return {
+      today_date: userTimezone
+        ? new Date(convertToTimezone(new Date(), userTimezone))
+        : new Date(),
+      order_delivery_minimum_date,
+      order_delivery_maximum_date,
+      order_ready_minimum_date,
+      order_ready_maximum_date,
+    };
+  }
+
+  async function calculateTimeUntilNextCutoff(configData, userTimezone = "") {
+    let today = new Date();
+
+    if (configData?.timezone_setting?.mode === "custom") {
+      today = new Date(
+        convertToTimezone(today, configData?.timezone_setting?.timezone)
+      );
+    } else {
+      if (userTimezone) {
+        today = new Date(convertToTimezone(today, userTimezone));
+      }
+    }
+
+    const holidays = configData?.holidays;
+    const cutoffTime = configData?.countdown_setting?.cutoff_time;
+    const cutoffTimeAdvancedEnabled =
+      configData?.countdown_setting?.advanced_enable;
+    const cutoffTimeAdvanced = configData?.countdown_setting?.advanced_time;
+
+    const workingWeek = configData?.order_ready_setting?.work_week;
+
+    let iterationDate = new Date(today);
+
+    // If order is after cutoff time, move to next day
+    if (cutoffTimeAdvancedEnabled) {
+      if (
+        iterationDate.getHours() >
+          cutoffTimeAdvanced[iterationDate.getDay()]?.hours ||
+        (iterationDate.getHours() ===
+          cutoffTimeAdvanced[iterationDate.getDay()]?.hours &&
+          iterationDate.getMinutes() >=
+            cutoffTimeAdvanced[iterationDate.getDay()]?.minutes)
+      ) {
+        iterationDate = addDaysToDate(iterationDate, 1);
+      }
+    } else {
+      if (
+        iterationDate.getHours() > cutoffTime?.hours ||
+        (iterationDate.getHours() === cutoffTime?.hours &&
+          iterationDate.getMinutes() >= cutoffTime?.minutes)
+      ) {
+        iterationDate = addDaysToDate(iterationDate, 1);
+      }
+    }
+
+    while (!isWorkdayAndNotHoliday(iterationDate, workingWeek, holidays)) {
+      iterationDate = addDaysToDate(iterationDate, 1);
+    }
+
+    let cutoffHours, cutoffMinutes;
+
+    if (cutoffTimeAdvancedEnabled) {
+      cutoffHours = cutoffTimeAdvanced[iterationDate.getDay()]?.hours;
+      cutoffMinutes = cutoffTimeAdvanced[iterationDate.getDay()]?.minutes;
+    } else {
+      cutoffHours = cutoffTime?.hours;
+      cutoffMinutes = cutoffTime?.minutes;
+    }
+
+    let cutoffDate = new Date(iterationDate);
+    cutoffDate.setHours(cutoffHours, cutoffMinutes, 0, 0);
+
+    return Math.floor((cutoffDate - today) / 1000);
+  }
+
+  // ------------------------------ Token Functions ------------------------------
+  async function getTokensValue(config, userLocationData, userTimezone = "") {
+    const tokenValues = await calculateTokenValues(config, userTimezone);
+
+    const countDownTime = await calculateTimeUntilNextCutoff(
+      config,
+      userTimezone
+    );
+
+    const formattedTokenValues = {
+      advanced_country_flag: `icon-${userLocationData.country_code}_f`,
+      advanced_country_name: userLocationData.country_name,
+      country_flag: `icon-${userLocationData.country_code}_f`,
+      country_name: userLocationData.country_name,
+      countdown_time: toTimeFormat(
+        countDownTime,
+        config.time_format,
+        config.variable_language_translate
+      ),
+      today_date: toDateFormat(
+        tokenValues.today_date,
+        config.date_format,
+        config.variable_language_translate
+      ),
+      order_delivery_minimum_date: toDateFormat(
+        tokenValues.order_delivery_minimum_date,
+        config.date_format,
+        config.variable_language_translate
+      ),
+      order_delivery_maximum_date: toDateFormat(
+        tokenValues.order_delivery_maximum_date,
+        config.date_format,
+        config.variable_language_translate
+      ),
+      order_ready_minimum_date: toDateFormat(
+        tokenValues.order_ready_minimum_date,
+        config.date_format,
+        config.variable_language_translate
+      ),
+      order_ready_maximum_date: toDateFormat(
+        tokenValues.order_ready_maximum_date,
+        config.date_format,
+        config.variable_language_translate
+      ),
+    };
+
+    return formattedTokenValues;
+  }
+
+  function replaceTokenPlaceholders(text, values) {
+    const againReplaceableTokens = [
+      "today_date",
+      "order_ready_minimum_date",
+      "order_ready_maximum_date",
+      "order_delivery_minimum_date",
+      "order_delivery_maximum_date",
+    ];
+
+    return text.replace(/{(\w+)}/g, (_, key) => {
+      if (values[key] !== undefined) {
+        return againReplaceableTokens.includes(key)
+          ? `<span class="token-${key}">${values[key]}</span>`
+          : values[key];
+      }
+      return `{${key}}`;
+    });
+  }
+
+  // ------------------------------ Event Listner update Functions ------------------------------
+  async function getCurrentUserLocationData() {
+    const advancedCountryFlag = document.querySelector(
+      "#advanced-country-flag #country-flag"
+    );
+    const advancedCountryName = document.querySelector(
+      "#advanced-country-name #country-name"
+    );
+
+    const countryList = await getCountryList();
+
+    let countryCode;
+    if (advancedCountryFlag) {
+      countryCode = advancedCountryFlag?.className
+        ?.split("icon-")?.[1]
+        ?.split("_")?.[0];
+    }
+    if (advancedCountryName) {
+      const name = advancedCountryName?.textContent;
+      countryCode = Object.entries(countryList).find(
+        ([code, country]) => country.name.toLowerCase() === name.toLowerCase()
+      )[0];
+    }
+
+    if (!countryCode) {
+      return null;
+    }
+
+    return {
+      code: countryCode,
+      name: countryList[countryCode]?.name,
+      timezone: countryList[countryCode]?.timezone,
+    };
+  }
+
+  async function updateWidgets(config, userLocationData) {
+    const tokenClasses = [
+      "token-today_date",
+      "token-order_delivery_minimum_date",
+      "token-order_delivery_maximum_date",
+      "token-order_ready_minimum_date",
+      "token-order_ready_maximum_date",
+      "token-countdown_time",
+    ];
+
+    const currentUserLocationData = await getCurrentUserLocationData();
+
+    const newUserTimezone = currentUserLocationData
+      ? currentUserLocationData?.timezone
+      : "";
+    const newUserLocationData = {
+      ...userLocationData,
+      country_code: currentUserLocationData
+        ? currentUserLocationData?.code
+        : userLocationData.country_code,
+      country_name: currentUserLocationData
+        ? currentUserLocationData?.name
+        : userLocationData.country_name,
+    };
+
+    const newTokenValues = await getTokensValue(
+      config,
+      newUserLocationData,
+      newUserTimezone
+    );
+
+    tokenClasses.forEach(async (tokenClass) => {
+      const tokenContainers = document.querySelectorAll(`.${tokenClass}`);
+      tokenContainers.forEach((tokenContainer) => {
+        const tokenValue = newTokenValues[tokenClass.split("token-")[1]];
+        tokenContainer.innerHTML = tokenValue;
+      });
+    });
+  }
+
   // ------------------------------ WIDGET BOX  ------------------------------
   async function createWidgetBox(widgetBoxStyle) {
     const widgetBox = await createElem({
@@ -1025,71 +979,60 @@
   }
 
   // ------------------------------ Text Message Widget ------------------------------
-  function replacePlaceholders(template, tokenCss, iconCss) {
-    function styleObjectToString(styleObj) {
-      return Object.entries(styleObj)
-        .map(
-          ([key, value]) =>
-            `${key.replace(/([A-Z])/g, "-$1").toLowerCase()}: ${value}`
-        )
-        .join("; ");
+  // ... countdown timer functions ...
+  async function validateMaxCountdownTimer(countdownTime, config) {
+    if (config?.countdown_setting?.max_cutoff?.mode === "hide") {
+      const totalMaxSeconds =
+        (await Number(config?.countdown_setting?.max_cutoff?.hours)) * 3600 +
+        Number(config?.countdown_setting?.max_cutoff?.minutes) * 60;
+      const textMessageWidget = await document.querySelector(
+        "#text-message-widget"
+      );
+      const progressBarWidget = await document.querySelector(
+        "#progress-bar-widget"
+      );
+      if (countdownTime > totalMaxSeconds) {
+        if (textMessageWidget) textMessageWidget.style.display = "none";
+        if (progressBarWidget) progressBarWidget.style.display = "none";
+      } else {
+        const outOfStockMessageWidget = document.querySelector(
+          "#out-of-stock-message-widget"
+        );
+
+        if (
+          outOfStockMessageWidget &&
+          outOfStockMessageWidget.style.display === "none"
+        ) {
+          if (textMessageWidget) textMessageWidget.style.display = "block";
+          if (progressBarWidget) progressBarWidget.style.display = "block";
+        }
+      }
     }
-
-    return template.replace(/\{([^}]+)\}/g, (match, variableName) => {
-      if (variableName === "advanced_country_flag") {
-        const htmlString = `<span id="advanced-country-flag" style="display: inline-flex; justify-content: center; align-items: center; cursor: pointer;"><span id="country-flag" class="${match}" style="display: inline-block; margin-right: 2px"></span><span style="padding-left: 2px;"><svg class="icon" style="width: 1em; height: 1em; vertical-align: middle; fill: currentColor; overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5661"><path d="M958.160991 320.247768 511.011998 766.80222 63.791373 320.247768 l65.113997-65.098647 L511.011998 636.748189 l382.034996-381.599068 L958.160991 320.247768" p-id="5662"></path></svg></span></span>`;
-        return htmlString;
-      }
-
-      if (variableName === "advanced_country_name") {
-        const htmlString = `<span id="advanced-country-name" style="display: inline-flex; justify-content: center; align-items: center; cursor: pointer;"><span id="country-name">${match}</span><span style="padding-left: 2px;"><svg class="icon" style="width: 1em; height: 1em; vertical-align: middle; fill: currentColor; overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5661"><path d="M958.160991 320.247768 511.011998 766.80222 63.791373 320.247768 l65.113997-65.098647 L511.011998 636.748189 l382.034996-381.599068 L958.160991 320.247768" p-id="5662"></path></svg></span></span>`;
-        return htmlString;
-      }
-
-      if (variableName === "country_flag") {
-        return `<span class="${match}" style="display: inline-block;"></span>`;
-      }
-
-      if (variableName.startsWith("icon_"))
-        return `<span style="display: inline-flex;position: relative; top: 3px;"><svg viewBox="0 0 1024 1024" width="${iconCss.fontSize}" height="${iconCss.fontSize}"  style="${styleObjectToString(iconCss)}">${getSVGIconPath(variableName.split("icon_")[1])}</svg></span>`;
-
-      if (variableName === "countdown_time")
-        return `<span id="countdown_timer" style="${styleObjectToString(tokenCss)}">${match}</span>`;
-
-      return `<span style="${styleObjectToString(tokenCss)}">${match}</span>`;
-    });
   }
 
-  async function replaceTokensTextMessage(config, message) {
-    const widgetMessageTextStyle = config.widget_message_text_appearance;
-
-    const tokenCss = {
-      backgroundColor: `${widgetMessageTextStyle.color.token_background_color}`,
-      color: `${widgetMessageTextStyle.color.token_color}`,
-      fontSize: `${widgetMessageTextStyle.font.token_text_size}px`,
-      fontFamily: `${widgetMessageTextStyle.font.token_font_family}`,
-    };
-    const iconCss = {
-      backgroundColor: `${widgetMessageTextStyle.color.icon_background_color}`,
-      color: `${widgetMessageTextStyle.color.icon_color}`,
-      fontSize: `${widgetMessageTextStyle.font.icon_size}px`,
-    };
-
-    const replacedTextMessage = await replacePlaceholders(
-      message,
-      tokenCss,
-      iconCss
-    );
-
-    return replacedTextMessage;
-  }
-
-  async function updateCountdownTimer(config) {
+  async function updateCountdownTimer(config, userLocationData) {
     setInterval(async () => {
-      const countdownElement = document.getElementById("countdown_timer");
+      const countdownElement = await document.getElementById("countdown_timer");
+      const currentUserLocationData = await getCurrentUserLocationData();
+      const userTimezone = currentUserLocationData
+        ? currentUserLocationData.timezone
+        : "";
       if (countdownElement) {
-        countdownElement.innerHTML = toTimeFormat(
-          await calculateTimeUntilNextCutoff(config),
+        const countdownTime = await calculateTimeUntilNextCutoff(
+          config,
+          userTimezone
+        );
+
+        if (countdownTime <= 1) {
+          setTimeout(async () => {
+            await updateWidgets(config, userLocationData);
+          }, 1000);
+        }
+
+        await validateMaxCountdownTimer(countdownTime, config);
+
+        countdownElement.innerHTML = await toTimeFormat(
+          countdownTime,
           config.time_format,
           config.variable_language_translate
         );
@@ -1097,6 +1040,7 @@
     }, 1000);
   }
 
+  // ... country modal functions ...
   async function updateCountry(countryCode, countryName) {
     // Update the country flag and name in the Widget
     const advancedCountryFlag = document.querySelector(
@@ -1127,58 +1071,6 @@
     if (selectedCountryName) {
       selectedCountryName.textContent = countryName;
     }
-  }
-
-  async function renderCountryOptionsList() {
-    const ulOptions = document.querySelector(
-      ".country-modal-content .country-option-list"
-    );
-
-    const countryOptionsList = await getCountryList();
-    let liHtml = "";
-
-    const searchInput = document.querySelector(".country-search-input");
-    searchInput.addEventListener("input", function (event) {
-      const searchValue = event.target.value.toLowerCase();
-      const countryItems = document.querySelectorAll(".country-item");
-      countryItems.forEach((item) => {
-        const countryName = item.getAttribute("data-name").toLowerCase();
-        if (countryName.includes(searchValue)) {
-          item.style.display = "flex";
-        } else {
-          item.style.display = "none";
-        }
-      });
-    });
-
-    Object.entries(countryOptionsList).forEach(([key, value]) => {
-      liHtml += `<li class="country-item" data-code="${key}" data-name="${value}">`;
-      liHtml += `<span class="icon-${key}_f" style="display: inline-block; margin-right: 6px" ></span>`;
-      liHtml += `<span>${value}</span>`;
-      liHtml += "</li>";
-    });
-
-    ulOptions.innerHTML = liHtml;
-
-    ulOptions.addEventListener("click", function (event) {
-      const clickedLi = event.target.closest("li");
-      if (clickedLi) {
-        const countryCode = clickedLi.getAttribute("data-code");
-        const countryName = clickedLi.getAttribute("data-name");
-
-        updateCountry(countryCode, countryName);
-
-        const modal = document.getElementById("advanced-country-modal");
-        modal.classList.remove("show-modal__country-modal");
-
-        const searchInput = document.querySelector(".country-search-input");
-        searchInput.value = "";
-        const countryItems = document.querySelectorAll(".country-item");
-        countryItems.forEach((item) => {
-          item.style.display = "flex";
-        });
-      }
-    });
   }
 
   async function updateAdvancedCountryModal() {
@@ -1232,9 +1124,71 @@
         .querySelector(".selected-country")
         .addEventListener("click", function () {
           const contrySelect = document.querySelector(".country-modal-content");
-          contrySelect.classList.toggle("active");
+          if (contrySelect) {
+            contrySelect.classList.toggle("active");
+          }
         });
     }
+  }
+
+  // ... text widget main functions ...
+  function styleObjectToString(styleObj) {
+    return Object.entries(styleObj)
+      .map(
+        ([key, value]) =>
+          `${key.replace(/([A-Z])/g, "-$1").toLowerCase()}: ${value}`
+      )
+      .join("; ");
+  }
+
+  function replacePlaceholders(template, tokenCss, iconCss) {
+    return template.replace(/\{([^}]+)\}/g, (match, variableName) => {
+      if (variableName === "advanced_country_flag") {
+        const htmlString = `<span id="advanced-country-flag" style="display: inline-flex; justify-content: center; align-items: center; cursor: pointer;"><span id="country-flag" class="${match}" style="display: inline-block; margin-right: 2px"></span><span style="padding-left: 2px;"><svg class="icon" style="width: 1em; height: 1em; vertical-align: middle; fill: currentColor; overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5661"><path d="M958.160991 320.247768 511.011998 766.80222 63.791373 320.247768 l65.113997-65.098647 L511.011998 636.748189 l382.034996-381.599068 L958.160991 320.247768" p-id="5662"></path></svg></span></span>`;
+        return htmlString;
+      }
+
+      if (variableName === "advanced_country_name") {
+        const htmlString = `<span id="advanced-country-name" style="display: inline-flex; justify-content: center; align-items: center; cursor: pointer;"><span id="country-name">${match}</span><span style="padding-left: 2px;"><svg class="icon" style="width: 1em; height: 1em; vertical-align: middle; fill: currentColor; overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5661"><path d="M958.160991 320.247768 511.011998 766.80222 63.791373 320.247768 l65.113997-65.098647 L511.011998 636.748189 l382.034996-381.599068 L958.160991 320.247768" p-id="5662"></path></svg></span></span>`;
+        return htmlString;
+      }
+
+      if (variableName === "country_flag") {
+        return `<span class="${match}" style="display: inline-block;"></span>`;
+      }
+
+      if (variableName.startsWith("icon_"))
+        return `<span style="display: inline-flex;position: relative; top: 3px;"><svg viewBox="0 0 1024 1024" width="${iconCss.fontSize}" height="${iconCss.fontSize}"  style="${styleObjectToString(iconCss)}">${getSVGIconPath(variableName.split("icon_")[1])}</svg></span>`;
+
+      if (variableName === "countdown_time")
+        return `<span id="countdown_timer" style="${styleObjectToString(tokenCss)}">${match}</span>`;
+
+      return `<span style="${styleObjectToString(tokenCss)}">${match}</span>`;
+    });
+  }
+
+  async function replaceTokensTextMessage(config, message) {
+    const widgetMessageTextStyle = config.widget_message_text_appearance;
+
+    const tokenCss = {
+      backgroundColor: `${widgetMessageTextStyle.color.token_background_color}`,
+      color: `${widgetMessageTextStyle.color.token_color}`,
+      fontSize: `${widgetMessageTextStyle.font.token_text_size}px`,
+      fontFamily: `${widgetMessageTextStyle.font.token_font_family}`,
+    };
+    const iconCss = {
+      backgroundColor: `${widgetMessageTextStyle.color.icon_background_color}`,
+      color: `${widgetMessageTextStyle.color.icon_color}`,
+      fontSize: `${widgetMessageTextStyle.font.icon_size}px`,
+    };
+
+    const replacedTextMessage = await replacePlaceholders(
+      message,
+      tokenCss,
+      iconCss
+    );
+
+    return replacedTextMessage;
   }
 
   async function createTextWidget(
@@ -1294,7 +1248,7 @@
 
     spanWrapper.innerHTML = parsedTextMessage.replace(/&nbsp;/g, "");
 
-    updateCountdownTimer(config);
+    updateCountdownTimer(config, userLocationData);
 
     return textMessageWidget;
   }
@@ -1581,6 +1535,58 @@
   }
 
   // ------------------------------ MAIN FUNCTIONS ------------------------------
+  async function renderCountryOptionsList() {
+    const ulOptions = document.querySelector(
+      ".country-modal-content .country-option-list"
+    );
+
+    const countryOptionsList = await getCountryList();
+    let liHtml = "";
+
+    const searchInput = document.querySelector(".country-search-input");
+    searchInput.addEventListener("input", function (event) {
+      const searchValue = event.target.value.toLowerCase();
+      const countryItems = document.querySelectorAll(".country-item");
+      countryItems.forEach((item) => {
+        const countryName = item.getAttribute("data-name").toLowerCase();
+        if (countryName.includes(searchValue)) {
+          item.style.display = "flex";
+        } else {
+          item.style.display = "none";
+        }
+      });
+    });
+
+    Object.entries(countryOptionsList).forEach(([key, value]) => {
+      liHtml += `<li class="country-item" data-code="${key}" data-name="${value.name}">`;
+      liHtml += `<span class="icon-${key}_f" style="display: inline-block; margin-right: 6px" ></span>`;
+      liHtml += `<span>${value.name}</span>`;
+      liHtml += "</li>";
+    });
+
+    ulOptions.innerHTML = liHtml;
+
+    ulOptions.addEventListener("click", function (event) {
+      const clickedLi = event.target.closest("li");
+      if (clickedLi) {
+        const countryCode = clickedLi.getAttribute("data-code");
+        const countryName = clickedLi.getAttribute("data-name");
+
+        updateCountry(countryCode, countryName);
+
+        const modal = document.getElementById("advanced-country-modal");
+        modal.classList.remove("show-modal__country-modal");
+
+        const searchInput = document.querySelector(".country-search-input");
+        searchInput.value = "";
+        const countryItems = document.querySelectorAll(".country-item");
+        countryItems.forEach((item) => {
+          item.style.display = "flex";
+        });
+      }
+    });
+  }
+
   async function renderCountryModal(modalSettings, modalStyle) {
     const countryModal = await createElem({
       tag: "div",
@@ -1705,6 +1711,34 @@
     return countryModal;
   }
 
+  async function renderCartWidget(title, description) {
+    let formSelectors = ['form[action*="/cart/add"]'];
+    let addToCartForms = Array.from(document.querySelectorAll(formSelectors));
+
+    // Check if there's a "product-form" element
+    if (document.querySelectorAll("product-form").length === 1) {
+      let productForm = document
+        .querySelector("product-form")
+        .querySelector('form[action*="/cart/add"]');
+      if (productForm) {
+        addToCartForms = [productForm];
+      }
+    }
+
+    addToCartForms.forEach(async (form) => {
+      const inputField = await createElem({
+        tag: "input",
+        attributes: {
+          type: "hidden",
+          class: "delivery-hidden",
+          name: `properties[${title}]`,
+          value: `${description}`,
+        },
+      });
+      form.insertBefore(inputField, form.firstChild);
+    });
+  }
+
   async function renderWidget(container, config, userLocationData) {
     try {
       // Check if the product is available
@@ -1717,13 +1751,17 @@
       );
       await container.appendChild(countryModal);
 
+      // Create the widget box
       const widgetBox = await createWidgetBox(config.widget_box_appearnace);
+
+      // Create the text message widget
       const textMessageWidget = await createTextWidget(
         config,
         userLocationData,
         false // isOutOfStockMessage
       );
 
+      // create the progress bar widget
       let progressBarWidget;
       if (config.widget_progress_bar_mode === "basic") {
         progressBarWidget = await createBasicProgressBarWidget(
@@ -1737,6 +1775,19 @@
         );
       }
 
+      // hide the widget if the countdown time is greater than the max cutoff time
+      const countdownTime = await calculateTimeUntilNextCutoff(config);
+      if (config?.countdown_setting?.max_cutoff?.mode === "hide") {
+        const totalMaxSeconds =
+          (await Number(config?.countdown_setting?.max_cutoff?.hours)) * 3600 +
+          Number(config?.countdown_setting?.max_cutoff?.minutes) * 60;
+        if (countdownTime > totalMaxSeconds) {
+          if (textMessageWidget) textMessageWidget.style.display = "none";
+          if (progressBarWidget) progressBarWidget.style.display = "none";
+        }
+      }
+
+      // Append the widgets to the widget box
       if (config.widget_layout_mode === "messageAndProgress") {
         if (config.widget_layout_mode !== "progressOnly") {
           widgetBox.appendChild(textMessageWidget);
@@ -1754,7 +1805,6 @@
       }
 
       // Append the widget box to the container
-
       if (config?.widget_out_of_stock_mode === "custom") {
         const outOfStockMessageWidget = await createTextWidget(
           config,
@@ -1767,13 +1817,16 @@
         }
       }
 
+      // Append the widget box to the container
       container.appendChild(widgetBox);
 
+      // Hide the widget if the product is not available
       if (!isProductAvailable) {
         textMessageWidget.style.display = "none";
         progressBarWidget.style.display = "none";
       }
 
+      // update the country flag and name
       updateAdvancedCountryModal();
       updateCountry(
         userLocationData.country_code,
@@ -1788,10 +1841,54 @@
           tokenValues
         );
 
-        await addCartWidget(
+        await renderCartWidget(
           config?.cart_checkout_setting?.title,
           parsedDescription
         );
+      }
+
+      // update the widget when the user changes the country or countdown timer finish
+      const advancedCountryFlag = document.querySelector(
+        "#advanced-country-flag #country-flag"
+      );
+      const advancedCountryName = document.querySelector(
+        "#advanced-country-name #country-name"
+      );
+
+      // MutationObserver callback function
+      function handleChange(mutationsList) {
+        let detectedChange = false;
+
+        mutationsList.forEach((mutation) => {
+          if (
+            mutation.type === "attributes" &&
+            mutation.attributeName === "class"
+          ) {
+            detectedChange = true;
+          }
+          if (mutation.type === "childList") {
+            detectedChange = true;
+          }
+          if (detectedChange) {
+            updateWidgets(config, userLocationData);
+          }
+        });
+      }
+
+      // Create a MutationObserver instance
+      const observer = new MutationObserver(handleChange);
+
+      if (advancedCountryFlag) {
+        observer.observe(advancedCountryFlag, {
+          attributes: true,
+          attributeFilter: ["class"],
+        });
+      }
+      if (advancedCountryName) {
+        observer.observe(advancedCountryName, {
+          childList: true,
+          subtree: true,
+        });
       }
     } catch (error) {
       console.error("Error rendering widget:", error);
@@ -1800,7 +1897,7 @@
   }
 
   // ------------------------------ SHOPIFY DATA GETERS FUNCTIONS ------------------------------
-  // Get Shop from various sources
+  // ... get shop data from shopify ...
   async function getShop() {
     try {
       if (window.Shopify && Shopify.shop) {
@@ -1814,7 +1911,7 @@
     }
   }
 
-  // Get product ID from various sources
+  // ... get product ID from various sources ...
   async function getProductId() {
     try {
       // Option 1: ShopifyAnalytics object (works on product pages)
@@ -1844,7 +1941,7 @@
       return null;
     }
   }
-  // Fetch product ID by handle
+  // ... get product ID by handle ...
   async function fetchProductIdByHandle(handle) {
     try {
       const response = await fetch(`/products/${handle}.json`);
@@ -1858,7 +1955,7 @@
     }
   }
 
-  // Get the product handle
+  // ... get product handle from URL or meta tag ...
   async function getProductHandle() {
     try {
       // Option 1: Extract from URL (if URL follows standard product path)
@@ -1888,7 +1985,7 @@
     }
   }
 
-  // Get the availability of the product
+  // ... get product availability from shopify ...
   async function getProductAvailability() {
     try {
       const productHandle = await getProductHandle();
@@ -1914,9 +2011,7 @@
           (variant) => variant?.id == selectedVariantId
         );
 
-        if (selectedVariantData && !selectedVariantData?.available) {
-          return false;
-        }
+        return selectedVariantData?.available || false;
       }
 
       // Return product availability
@@ -1927,6 +2022,7 @@
     }
   }
 
+  // ... get user location from api ...
   async function getUserLocation() {
     async function fetchFromGeoJs() {
       const response = await fetch("https://get.geojs.io/v1/ip/geo.json");
@@ -1982,7 +2078,7 @@
     }
   }
 
-  // Fetch delivery configuration for a product
+  // ... get configuration from db ...
   async function fetchConfig(productId, shop) {
     try {
       const response = await fetch(
@@ -2019,6 +2115,7 @@
     }
   }
 
+  // ------------------------------ Init Helper FUNCTIONS ------------------------------
   async function addContainer(
     container,
     queryContainer,
@@ -2049,34 +2146,7 @@
     }
   }
 
-  async function addCartWidget(title, description) {
-    let formSelectors = ['form[action*="/cart/add"]'];
-    let addToCartForms = Array.from(document.querySelectorAll(formSelectors));
-
-    // Check if there's a "product-form" element
-    if (document.querySelectorAll("product-form").length === 1) {
-      let productForm = document
-        .querySelector("product-form")
-        .querySelector('form[action*="/cart/add"]');
-      if (productForm) {
-        addToCartForms = [productForm];
-      }
-    }
-
-    addToCartForms.forEach(async (form) => {
-      const inputField = await createElem({
-        tag: "input",
-        attributes: {
-          type: "hidden",
-          class: "delivery-hidden",
-          name: `properties[${title}]`,
-          value: `${description}`,
-        },
-      });
-      form.insertBefore(inputField, form.firstChild);
-    });
-  }
-
+  // ------------------------------ Init FUNCTIONS ------------------------------
   async function initStyles() {
     const cssUrls = [
       "https://cdn.jsdelivr.net/gh/Vaghani-Rushal/shopify-app-assets@main/code-flags.css",
@@ -2114,7 +2184,8 @@
       const countryList = await getCountryList();
       let userLocationData = {
         country_code: locationData?.country?.toLowerCase() || "us",
-        country_name: countryList[locationData?.country?.toLowerCase() || "us"],
+        country_name:
+          countryList[locationData?.country?.toLowerCase() || "us"].name,
         region_name: locationData?.region || "",
       };
       if (!locationData) {
@@ -2210,7 +2281,7 @@
 
       if (!container) return;
 
-      renderWidget(container, config, userLocationData);
+      await renderWidget(container, config, userLocationData);
     } catch (error) {
       console.error("Error initializing widget:", error);
     }
@@ -2223,10 +2294,11 @@
 
   initAll();
 
+  // ------------------------------ Variant Change Detection ------------------------------
   function detectVariantChange() {
     const productForms = document.querySelectorAll("form[action*='/cart/add']");
 
-    if (!productForms.length) return;
+    if (!productForms?.length) return;
 
     productForms.forEach((form) => {
       form.addEventListener("change", () => {
@@ -2237,6 +2309,7 @@
       });
     });
   }
+
   async function handleVariantChange() {
     const isProductAvailable = await getProductAvailability();
     const textMessageWidget = document.querySelector("#text-message-widget");
@@ -2249,16 +2322,17 @@
       if (outOfStockMessageWidget) {
         outOfStockMessageWidget.style.display = "none";
       }
-      textMessageWidget.style.display = "block";
-      progressBarWidget.style.display = "block";
+      if (textMessageWidget) textMessageWidget.style.display = "block";
+      if (progressBarWidget) progressBarWidget.style.display = "block";
     } else {
       if (outOfStockMessageWidget) {
         outOfStockMessageWidget.style.display = "block";
       }
-      textMessageWidget.style.display = "none";
-      progressBarWidget.style.display = "none";
+      if (textMessageWidget) textMessageWidget.style.display = "none";
+      if (progressBarWidget) progressBarWidget.style.display = "none";
     }
   }
 
+  handleVariantChange();
   detectVariantChange();
 })();
