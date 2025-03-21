@@ -2149,9 +2149,9 @@
   // ------------------------------ Init FUNCTIONS ------------------------------
   async function initStyles() {
     const cssUrls = [
-      "https://cdn.jsdelivr.net/gh/Vaghani-Rushal/shopify-app-assets@main/code-flags.css",
-      "https://cdn.jsdelivr.net/gh/Vaghani-Rushal/shopify-app-assets@main/country-modal.css",
-      "https://cdn.jsdelivr.net/gh/Vaghani-Rushal/shopify-app-assets@main/my-app-block.css",
+      "https://cdn.jsdelivr.net/gh/Monkey-Lufy/shopify-assets@main/code-flags.css",
+      "https://cdn.jsdelivr.net/gh/Monkey-Lufy/shopify-assets@main/country-modal.css",
+      "https://cdn.jsdelivr.net/gh/Monkey-Lufy/shopify-assets@main/my-app-block.css",
     ];
 
     cssUrls.forEach((url) => {
@@ -2336,3 +2336,9 @@
   handleVariantChange();
   detectVariantChange();
 })();
+
+// https://cdn.jsdelivr.net/gh/Monkey-Lufy/shopify-assets@main/code_flags.png
+// https://cdn.jsdelivr.net/gh/Monkey-Lufy/shopify-assets@main/code-flags.css
+// https://cdn.jsdelivr.net/gh/Monkey-Lufy/shopify-assets@main/country-modal.css
+// https://cdn.jsdelivr.net/gh/Monkey-Lufy/shopify-assets@main/my-app-block.css
+// https://cdn.jsdelivr.net/gh/Monkey-Lufy/shopify-assets@main/my-app-block.js
